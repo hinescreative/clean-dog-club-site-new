@@ -214,6 +214,123 @@ a:hover {
 }
 
 /* ============================================================
+   Layout helpers
+   ============================================================ */
+
+.section-shell {
+  max-width: 1200px;
+  margin: 96px auto 0;
+  padding: 0 48px;
+}
+
+.hero-shell {
+  margin-top: 0;
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+.trust-shell {
+  margin-top: 40px;
+}
+
+.hero-grid,
+.services-grid,
+.promise-grid,
+.testimonials-grid,
+.visit-grid,
+.footer-grid,
+.trust-grid {
+  display: grid;
+}
+
+.hero-grid {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-actions,
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hero-actions {
+  gap: 12px;
+}
+
+.hero-meta {
+  gap: 24px;
+  margin-top: 36px;
+  align-items: center;
+}
+
+.hero-badge {
+  position: absolute;
+  bottom: -20px;
+  left: -30px;
+}
+
+.topnav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 48px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.topnav-links {
+  display: flex;
+  gap: 22px;
+  margin-left: 14px;
+  flex-wrap: wrap;
+}
+
+.topnav-spacer {
+  flex: 1 1 auto;
+}
+
+.topnav-contact {
+  white-space: nowrap;
+}
+
+.trust-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.services-grid,
+.testimonials-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.promise-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+}
+
+.visit-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.footer-grid {
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+
+.footer-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.modal-panel {
+  width: 560px;
+  max-width: 100%;
+  padding: 36px;
+}
+
+/* ============================================================
    Photo system — bento gallery, tiles, lightbox
    ============================================================ */
 
@@ -225,7 +342,12 @@ a:hover {
   background: var(--sudsy-cream-2);
   isolation: isolate;
 }
-.photo-tile > img {
+.photo-tile > picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.photo-tile > picture > img {
   display: block;
   width: 100%;
   height: 100%;
@@ -261,7 +383,94 @@ a:hover {
   pointer-events: none;
   box-shadow: var(--shadow-sm);
 }
-.photo-tile:hover > img {
+.photo-tile .tile-label {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  max-width: calc(100% - 64px);
+  min-width: 120px;
+  padding: 16px 14px 12px;
+  border-radius: 20px 20px 18px 8px;
+  background: rgba(246,239,228,0.97);
+  color: var(--lincoln-navy);
+  border: 1px solid rgba(31,46,61,0.08);
+  box-shadow: 0 18px 30px -18px rgba(31,46,61,0.38);
+  opacity: 0.98;
+  transform: translateY(8px) rotate(-1.5deg);
+  transition: transform 280ms var(--ease-calm), opacity 280ms var(--ease-calm), box-shadow 280ms var(--ease-calm);
+  pointer-events: none;
+}
+.photo-tile .tile-label.featured {
+  padding: 18px 16px 14px;
+  border-radius: 24px 24px 20px 10px;
+}
+.photo-tile .tile-label-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.photo-tile .tile-label-subtitle {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(31,46,61,0.56);
+}
+.photo-tile .tile-label-pin {
+  position: absolute;
+  top: -7px;
+  left: 20px;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f29f92 0%, #c35f50 100%);
+  box-shadow: 0 4px 8px rgba(31,46,61,0.22);
+}
+.photo-tile .tile-label-pin::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: inherit;
+  background: rgba(255,255,255,0.45);
+}
+.photo-tile .tile-label.pin-a {
+  background: linear-gradient(180deg, rgba(246,239,228,0.98) 0%, rgba(239,230,214,0.98) 100%);
+  transform: translateY(8px) rotate(-2deg);
+}
+.photo-tile .tile-label.pin-b {
+  background: linear-gradient(180deg, rgba(255,251,243,0.98) 0%, rgba(233,240,235,0.98) 100%);
+  border-radius: 16px 22px 16px 16px;
+  transform: translateY(8px) rotate(1.8deg);
+}
+.photo-tile .tile-label.pin-b .tile-label-pin {
+  left: auto;
+  right: 18px;
+  background: linear-gradient(180deg, #7a99b5 0%, #476882 100%);
+}
+.photo-tile .tile-label.pin-c {
+  background: linear-gradient(180deg, rgba(251,244,235,0.98) 0%, rgba(245,227,204,0.98) 100%);
+  border-radius: 22px 16px 20px 10px;
+  transform: translateY(8px) rotate(-0.8deg);
+}
+.photo-tile .tile-label.pin-c .tile-label-pin {
+  background: linear-gradient(180deg, #d3b17f 0%, #ad8561 100%);
+}
+.photo-tile .tile-label.pin-d {
+  background: linear-gradient(180deg, rgba(248,241,233,0.98) 0%, rgba(231,221,209,0.98) 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 84%, 92% 100%, 0 100%);
+  border-radius: 18px;
+  transform: translateY(8px) rotate(2deg);
+}
+.photo-tile .tile-label.pin-d .tile-label-pin {
+  background: linear-gradient(180deg, #84a678 0%, #526e50 100%);
+}
+.photo-tile:hover > picture > img {
   transform: scale(1.055);
   filter: saturate(1.06);
 }
@@ -271,6 +480,10 @@ a:hover {
 .photo-tile:hover .tile-icon {
   opacity: 1;
   transform: translateY(0);
+}
+.photo-tile:hover .tile-label {
+  transform: translateY(0) rotate(0deg);
+  box-shadow: 0 24px 34px -18px rgba(31,46,61,0.42);
 }
 
 /* Bento grid — 4 desktop cols, 2 tablet, 1 mobile, feature tiles span 2x2 */
@@ -302,6 +515,26 @@ a:hover {
   .bento { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .bento .photo-tile.feature { grid-column: span 2; grid-row: span 2; border-radius: var(--r-lg); }
   .bento .photo-tile.wide { grid-column: span 2; }
+  .photo-tile .tile-label {
+    left: 8px;
+    right: 44px;
+    bottom: 8px;
+    max-width: none;
+    min-width: 0;
+    padding: 12px 11px 10px;
+  }
+  .photo-tile .tile-label-title {
+    font-size: 13px;
+  }
+  .photo-tile .tile-label-subtitle {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+  .photo-tile .tile-label-pin {
+    width: 12px;
+    height: 12px;
+    top: -6px;
+  }
 }
 
 /* Hero photo */
@@ -313,7 +546,12 @@ a:hover {
   aspect-ratio: 4 / 5;
   background: var(--sudsy-cream-2);
 }
-.hero-photo > img {
+.hero-photo > picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.hero-photo > picture > img {
   display: block;
   width: 100%;
   height: 100%;
@@ -321,7 +559,7 @@ a:hover {
   transition: transform 9s var(--ease-calm);
   transform: scale(1);
 }
-.hero-photo:hover > img { transform: scale(1.08); }
+.hero-photo:hover > picture > img { transform: scale(1.08); }
 
 /* Lightbox */
 .lightbox {
@@ -369,6 +607,15 @@ a:hover {
   text-align: center;
   padding: 0 12px;
   animation: lb-pop 400ms var(--ease-calm);
+}
+.lightbox-caption-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--sudsy-cream);
+  margin-bottom: 8px;
 }
 @keyframes lb-pop {
   from { opacity: 0; transform: scale(0.96); }
@@ -432,4 +679,84 @@ a:hover {
   .lightbox-btn { width: 40px; height: 40px; }
   .lightbox-btn.prev { left: 8px; }
   .lightbox-btn.next { right: 8px; }
+}
+
+@media (max-width: 1100px) {
+  .hero-grid,
+  .promise-grid,
+  .visit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-grid,
+  .testimonials-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-badge {
+    left: 16px;
+    bottom: 16px;
+    max-width: calc(100% - 32px);
+  }
+}
+
+@media (max-width: 760px) {
+  .section-shell {
+    margin-top: 72px;
+    padding: 0 20px;
+  }
+
+  .hero-shell {
+    padding-top: 48px;
+    padding-bottom: 32px;
+  }
+
+  .topnav-inner {
+    padding: 12px 20px;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .topnav-links {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .topnav-contact {
+    display: none;
+  }
+
+  .trust-grid,
+  .services-grid,
+  .testimonials-grid,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .promise-grid,
+  .visit-grid {
+    gap: 28px;
+  }
+
+  .hero-grid {
+    gap: 32px;
+  }
+
+  .hero-badge {
+    position: static;
+    margin-top: 16px;
+    max-width: none;
+  }
+
+  .modal-panel {
+    padding: 24px;
+  }
 }

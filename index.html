@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="colors_and_type.css">
   <link rel="preload" as="image" href="assets/ig/webp/DWmb8MdDSbR.webp" fetchpriority="high" type="image/webp">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
   <style>
     html, body { margin: 0; padding: 0; scroll-behavior: smooth; }
@@ -41,7 +41,7 @@
       return <span ref={ref} style={{ display: 'inline-flex', alignItems: 'center', ...style }} />;
     }
 
-    function Button({ variant = 'primary', size = 'md', children, onClick, style }) {
+    function Button({ variant = 'primary', size = 'md', type = 'button', children, onClick, style }) {
       const base = {
         fontFamily: 'var(--font-body)',
         fontWeight: 600,
@@ -74,6 +74,7 @@
       };
       return (
         <button
+          type={type}
           onClick={onClick}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
@@ -117,7 +118,7 @@
       );
     }
 
-    function TopNav({ onBook, page, onNavigate }) {
+    function TopNav({ onBook }) {
       const links = [
         { id: 'hero', label: 'Home' },
         { id: 'services', label: 'Services' },
@@ -131,7 +132,7 @@
           WebkitBackdropFilter: 'blur(14px)',
           borderBottom: '1px solid var(--border)',
         }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '14px 48px', display: 'flex', alignItems: 'center', gap: 28 }}>
+          <div className="topnav-inner">
             <a href="#hero" style={{
               display: 'flex', alignItems: 'center', gap: 10,
               cursor: 'pointer', border: 'none', textDecoration: 'none'
@@ -142,7 +143,7 @@
                 color: 'var(--fg1)', letterSpacing: '-0.01em', whiteSpace: 'nowrap'
               }}>The Clean Dog Club</span>
             </a>
-            <nav style={{ display: 'flex', gap: 22, marginLeft: 14 }}>
+            <nav className="topnav-links">
               {links.map(l => (
                 <a key={l.id} href={`#${l.id}`} style={{
                   fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 500,
@@ -152,10 +153,10 @@
                 }}>{l.label}</a>
               ))}
             </nav>
-            <div style={{ flex: 1 }} />
-            <div style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--fg2)', display: 'flex', alignItems: 'center', gap: 6, textDecoration: 'none' }}>
+            <div className="topnav-spacer" />
+            <a href="tel:+12243574200" className="topnav-contact" style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--fg2)', display: 'flex', alignItems: 'center', gap: 6, textDecoration: 'none' }}>
               <Icon name="phone" size={14} /> (224) 357-4200
-            </div>
+            </a>
             <Button size="sm" onClick={onBook}>Book appointment</Button>
           </div>
         </header>
@@ -168,7 +169,7 @@
           background: 'var(--lincoln-navy)', color: 'var(--sudsy-cream)',
           marginTop: 96, padding: '64px 48px 40px'
         }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto', display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 48 }}>
+          <div className="footer-grid" style={{ maxWidth: 1200, margin: '0 auto', gap: 48 }}>
             <div>
               <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 22, marginBottom: 10 }}>The Clean Dog Club</div>
               <p style={{ color: 'rgba(246,239,228,0.72)', fontSize: 14, lineHeight: 1.6, maxWidth: 320 }}>
@@ -185,7 +186,8 @@
             <div>
               <div className="eyebrow" style={{ color: 'var(--biscuit-tan)', marginBottom: 14 }}>Contact</div>
               <div style={{ fontSize: 14, lineHeight: 1.7, color: 'rgba(246,239,228,0.85)' }}>
-                (224) 357-4200<br/>thecleandogclub@gmail.com
+                <a href="tel:+12243574200" style={{ color: 'inherit', borderBottom: 'none' }}>(224) 357-4200</a><br/>
+                <a href="mailto:thecleandogclub@gmail.com" style={{ color: 'inherit', borderBottom: 'none' }}>thecleandogclub@gmail.com</a>
               </div>
             </div>
             <div>
@@ -195,7 +197,7 @@
               </div>
             </div>
           </div>
-          <div style={{ maxWidth: 1200, margin: '48px auto 0', paddingTop: 24, borderTop: '1px solid rgba(246,239,228,0.18)', display: 'flex', justifyContent: 'space-between', fontSize: 12, color: 'rgba(246,239,228,0.5)' }}>
+          <div className="footer-meta" style={{ maxWidth: 1200, margin: '48px auto 0', paddingTop: 24, borderTop: '1px solid rgba(246,239,228,0.18)', fontSize: 12, color: 'rgba(246,239,228,0.5)' }}>
             <span>© 2026 The Clean Dog Club LLC</span>
             <span>13 years grooming · Cage-free, always</span>
           </div>
@@ -238,11 +240,11 @@
 
     /* --- Sections --- */
     function Hero({ onBook }) {
+      const scrollToServices = () => {
+        document.getElementById('services')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
       return (
-        <section id="hero" style={{
-          maxWidth: 1200, margin: '0 auto', padding: '80px 48px 40px',
-          display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 56, alignItems: 'center',
-        }}>
+        <section id="hero" className="section-shell hero-shell hero-grid">
           <div>
             <Tag tone="tan">Cage-free · One-on-one · All breeds</Tag>
             <h1 className="display" style={{ fontSize: 48, lineHeight: 1.08, letterSpacing: '-0.025em', margin: '20px 0 24px', maxWidth: 460 }}>
@@ -251,11 +253,11 @@
             <p style={{ fontSize: 19, lineHeight: 1.55, color: 'var(--fg2)', maxWidth: 520, margin: '0 0 32px' }}>
               A cage-free, one-on-one salon in Fox River Grove. From the moment your pup walks in until they leave, they have the groomer's full attention — never crated, never rushed.
             </p>
-            <div style={{ display: 'flex', gap: 12 }}>
+            <div className="hero-actions">
               <Button size="lg" onClick={onBook}>Book an appointment <Icon name="arrow-right" size={16} /></Button>
-              <a href="#services"><Button size="lg" variant="secondary">See services</Button></a>
+              <Button size="lg" variant="secondary" onClick={scrollToServices}>See services</Button>
             </div>
-            <div style={{ display: 'flex', gap: 24, marginTop: 36, alignItems: 'center' }}>
+            <div className="hero-meta">
               <StarRow />
               <span style={{ fontSize: 13, color: 'var(--fg2)' }}>4.8 on Google · 13 years grooming · All breeds welcome</span>
             </div>
@@ -273,8 +275,7 @@
                 />
               </picture>
             </div>
-            <div style={{
-              position: 'absolute', bottom: -20, left: -30,
+            <div className="hero-badge" style={{
               background: 'var(--bg)', border: '1px solid var(--border)',
               borderRadius: 16, padding: '16px 20px', boxShadow: 'var(--shadow-md)',
               display: 'flex', gap: 14, alignItems: 'center', maxWidth: 280,
@@ -300,12 +301,10 @@
         { icon: 'award', label: '13 years experience' },
       ];
       return (
-        <section style={{
-          maxWidth: 1200, margin: '40px auto 0', padding: '0 48px',
-        }}>
-          <div style={{
+        <section className="section-shell trust-shell">
+          <div className="trust-grid" style={{
             borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)',
-            padding: '28px 0', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20,
+            padding: '28px 0',
           }}>
             {items.map(it => (
               <div key={it.label} style={{ display: 'flex', alignItems: 'center', gap: 12, color: 'var(--fg1)' }}>
@@ -320,13 +319,13 @@
 
     function Services({ onBook }) {
       return (
-        <section id="services" style={{ maxWidth: 1200, margin: '96px auto 0', padding: '0 48px' }}>
+        <section id="services" className="section-shell">
           <SectionHeading
             eyebrow="Services"
             title="What your pup can book."
             subtitle="Pricing varies a little based on breed, coat and condition — I'll quote you honestly when you book."
           />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginTop: 40 }}>
+          <div className="services-grid" style={{ gap: 20, marginTop: 40 }}>
             <ServiceCard eyebrow="Full groom" icon="scissors"
               title="Bath, cut, nails, ears &amp; finish"
               description="The whole experience. A warm bath, breed-appropriate cut, nails, ears and a finishing brush-out — all in one calm appointment."
@@ -346,11 +345,11 @@
 
     function PromiseBlock() {
       return (
-        <section style={{ maxWidth: 1200, margin: '96px auto 0', padding: '0 48px' }}>
-          <div style={{
+        <section className="section-shell">
+          <div className="promise-grid" style={{
             background: 'var(--lincoln-navy)', color: 'var(--sudsy-cream)',
             borderRadius: 24, padding: '64px 56px',
-            display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 56, alignItems: 'center',
+            gap: 56, alignItems: 'center',
           }}>
             <div>
               <div className="eyebrow" style={{ color: 'var(--biscuit-tan)', marginBottom: 14 }}>The Clean Dog Club promise</div>
@@ -371,11 +370,86 @@
 
     /* IG manifest injected as JSON at page load */
     const IG_PHOTOS = JSON.parse(document.getElementById('ig-manifest').textContent);
+    function titleCaseName(value) {
+      return value
+        .split(/\s+/)
+        .filter(Boolean)
+        .map(part => {
+          if (part === '&') return part;
+          return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+        })
+        .join(' ');
+    }
+
+    function extractDogNames(alt) {
+      const normalized = alt.trim();
+      const explicit = normalized.match(/welcome to (?:the )?club\s+(.+?)(?:\s*[☘️🎄👻🤠💚♥️😭✨😁🐰🫧⭐️😎💕☁️🎀😂!]|$)/i);
+      if (explicit) {
+        return explicit[1]
+          .split(/\s*&\s*/)
+          .map(name => titleCaseName(name.replace(/[.!]+$/g, '').trim()))
+          .filter(Boolean);
+      }
+
+      const matchers = [
+        /^(Theo)’s\b/i,
+        /\b(Bernard)\b/i,
+        /^(Ralph)\s+and his new little brother\s+(Bernard)\b/i,
+        /\bMiss\s+(Penny Lane)\b/i,
+        /^(Duncan)\s+is the sweetest boy\b/i,
+        /^((?:😁\s*)?Bear)\s+was all smiles\b/i,
+        /^(Willow)\s+insisted on posing\b/i,
+      ];
+
+      for (const matcher of matchers) {
+        const match = normalized.match(matcher);
+        if (match) {
+          return match.slice(1).filter(Boolean).map(titleCaseName);
+        }
+      }
+
+      return [];
+    }
+
+    function buildFallbackLabel(photo, index) {
+      const alt = photo.alt.trim();
+      const genericTitles = [
+        ['Club Portrait', 'Pinned from the salon'],
+        ['Fresh Fluff', 'Pinned after pickup'],
+        ['Camera Ready', 'Saved to the board'],
+        ['Spa Day', 'Fresh from the tub'],
+        ['Soft Coat', 'Another club favorite'],
+        ['Salon Star', 'One more polished pup'],
+      ];
+
+      if (/Cute October things/i.test(alt)) return { title: 'October Cutie', subtitle: 'Seasonal club board' };
+      if (/FLOOF/i.test(alt)) return { title: 'Big Sweet Floof', subtitle: 'Fluff level: expert' };
+      if (/🫧|🛁|🧼/.test(alt)) return { title: 'Bubble Bath', subtitle: 'Suds, fluff, repeat' };
+      if (/☁️/.test(alt)) return { title: 'Cloud Coat', subtitle: 'Soft finish, club approved' };
+      if (/📸|😎|⭐️/.test(alt)) return { title: 'Camera Ready', subtitle: 'Pinned for the glow-up' };
+      if (/tagging @thecleandogclub/i.test(alt)) return { title: 'Club Feature', subtitle: 'Shared on the inspiration board' };
+      if (/Photo by/i.test(alt)) return genericTitles[index % genericTitles.length];
+
+      return genericTitles[index % genericTitles.length];
+    }
+
+    const PHOTOS = IG_PHOTOS.map((photo, index) => {
+      const dogNames = extractDogNames(photo.alt);
+      const fallback = buildFallbackLabel(photo, index);
+      return {
+        ...photo,
+        dogNames,
+        labelTitle: dogNames.length > 0 ? dogNames.join(' & ') : fallback.title,
+        labelSubtitle: dogNames.length > 0 ? 'Fresh from the club' : fallback.subtitle,
+      };
+    });
     /* Feature positions spaced across 40 tiles for rhythm in the bento grid */
     const FEATURE_INDICES = new Set([0, 11, 22, 33]);
+    const LABEL_VARIANTS = ['pin-a', 'pin-b', 'pin-c', 'pin-d'];
 
     function PhotoTile({ photo, index, onOpen, featured }) {
       const fallbackJpg = `assets/ig/${photo.id}.jpg`;
+      const labelVariant = LABEL_VARIANTS[index % LABEL_VARIANTS.length];
       return (
         <button
           type="button"
@@ -402,6 +476,11 @@
           <span className="tile-icon" aria-hidden="true">
             <Icon name="zoom-in" size={16} stroke={2} />
           </span>
+          <div className={`tile-label ${labelVariant} ${featured ? 'featured' : ''}`} aria-hidden="true">
+            <span className="tile-label-pin" />
+            <span className="tile-label-title">{photo.labelTitle}</span>
+            <span className="tile-label-subtitle">{photo.labelSubtitle}</span>
+          </div>
         </button>
       );
     }
@@ -456,8 +535,11 @@
                 alt={photo.alt}
               />
             </picture>
-            {photo.alt && photo.alt.length < 140 && !photo.alt.startsWith('Photo ') && (
-              <div className="lightbox-caption">{photo.alt}</div>
+            {(photo.dogNames.length > 0 || (photo.alt && photo.alt.length < 140 && !photo.alt.startsWith('Photo '))) && (
+              <div className="lightbox-caption">
+                <div className="lightbox-caption-title">{photo.labelTitle}</div>
+                {photo.alt && <div>{photo.alt}</div>}
+              </div>
             )}
           </div>
           <button className="lightbox-btn next" onClick={(e) => { e.stopPropagation(); onNext(); }} aria-label="Next photo">
@@ -468,7 +550,7 @@
     }
 
     function Gallery() {
-      const photos = IG_PHOTOS;
+      const photos = PHOTOS;
       const count = photos.length;
       const [active, setActive] = React.useState(null);
       const open = active !== null;
@@ -477,11 +559,11 @@
       const next = () => setActive(i => (i + 1) % count);
 
       return (
-        <section id="gallery" style={{ maxWidth: 1200, margin: '96px auto 0', padding: '0 48px' }}>
+        <section id="gallery" className="section-shell">
           <SectionHeading
             eyebrow="The pack"
             title={<>Fresh haircuts, happy faces.</>}
-            subtitle="Every dog that leaves the shop gets a photo — so you know exactly how they did."
+            subtitle="Every dog that leaves the shop gets a photo, and the named pups get their own pin-style label."
           />
           <div className="bento">
             {photos.map((photo, i) => (
@@ -519,9 +601,9 @@
         { quote: "The only groomer my dogs have ever been excited to be dropped off at. They treat them like family.", who: 'Yelp review', src: 'Yelp' },
       ];
       return (
-        <section style={{ maxWidth: 1200, margin: '96px auto 0', padding: '0 48px' }}>
+        <section className="section-shell">
           <SectionHeading eyebrow="Neighbors are saying" title="Five stars, one dog at a time." align="center" />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginTop: 40 }}>
+          <div className="testimonials-grid" style={{ gap: 20, marginTop: 40 }}>
             {reviews.map((r, i) => (
               <div key={i} style={{
                 background: 'var(--bg-elevated)', border: '1px solid var(--border)',
@@ -543,8 +625,8 @@
 
     function VisitBlock({ onBook }) {
       return (
-        <section id="visit" style={{ maxWidth: 1200, margin: '96px auto 0', padding: '0 48px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'start' }}>
+        <section id="visit" className="section-shell">
+          <div className="visit-grid" style={{ gap: 48, alignItems: 'start' }}>
             <div>
               <SectionHeading eyebrow="Visit" title="Stop by or call." />
               <div style={{ marginTop: 32, display: 'grid', gap: 18 }}>
@@ -554,7 +636,10 @@
                 </div>
                 <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
                   <Icon name="phone" size={18} style={{ color: 'var(--biscuit-tan-2)', marginTop: 4 }} />
-                  <div><div style={{ fontWeight: 600 }}>(224) 357-4200</div><div style={{ color: 'var(--fg2)' }}>thecleandogclub@gmail.com</div></div>
+                  <div>
+                    <div style={{ fontWeight: 600 }}><a href="tel:+12243574200" style={{ color: 'inherit', borderBottom: 'none' }}>(224) 357-4200</a></div>
+                    <div style={{ color: 'var(--fg2)' }}><a href="mailto:thecleandogclub@gmail.com" style={{ color: 'inherit', borderBottom: 'none' }}>thecleandogclub@gmail.com</a></div>
+                  </div>
                 </div>
                 <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
                   <Icon name="calendar" size={18} style={{ color: 'var(--biscuit-tan-2)', marginTop: 4 }} />
@@ -568,24 +653,33 @@
             </div>
             <div style={{
               aspectRatio: '1/1', borderRadius: 24,
-              background: 'linear-gradient(135deg, #EFE6D6, #C9A07A)',
               border: '1px solid var(--border)', position: 'relative', overflow: 'hidden',
+              background: 'var(--bg-elevated)',
+              boxShadow: 'var(--shadow-md)',
             }}>
-              <svg viewBox="0 0 400 400" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
-                <path d="M0 220 Q 120 180 200 230 T 400 240" stroke="#5B8AA8" strokeWidth="22" fill="none" opacity="0.6"/>
-                <path d="M50 0 L 60 400" stroke="#1F2E3D" strokeWidth="2" opacity="0.35"/>
-                <path d="M0 120 L 400 110" stroke="#1F2E3D" strokeWidth="2" opacity="0.35"/>
-                <path d="M0 320 L 400 330" stroke="#1F2E3D" strokeWidth="2" opacity="0.35"/>
-                <path d="M240 0 L 260 400" stroke="#1F2E3D" strokeWidth="2" opacity="0.35"/>
-                <circle cx="200" cy="200" r="14" fill="#1F2E3D"/>
-                <circle cx="200" cy="200" r="5" fill="#F6EFE4"/>
-              </svg>
+              <iframe
+                title="The Clean Dog Club map"
+                src="https://www.google.com/maps?q=411+Lincoln+Ave+Fox+River+Grove+IL+60021&z=15&output=embed"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none' }}
+              />
               <div style={{
                 position: 'absolute', bottom: 20, left: 20,
                 background: 'var(--bg)', borderRadius: 12, padding: '10px 14px',
                 fontSize: 13, fontWeight: 600, color: 'var(--fg1)',
                 boxShadow: 'var(--shadow-sm)',
-              }}>411 Lincoln Ave, Fox River Grove</div>
+              }}>
+                <div>411 Lincoln Ave, Fox River Grove</div>
+                <a
+                  href={BUSINESS_LINKS.google}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ display: 'inline-block', marginTop: 6, fontSize: 12, fontWeight: 500, color: 'var(--river-blue-2)', borderBottom: 'none' }}
+                >
+                  Open in Google Maps →
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -595,24 +689,40 @@
     function BookingModal({ open, onClose }) {
       const [step, setStep] = React.useState(1);
       const [form, setForm] = React.useState({ name: '', dog: '', service: 'Full grooming', date: '', notes: '' });
+      React.useEffect(() => {
+        if (open) {
+          const prevOverflow = document.body.style.overflow;
+          document.body.style.overflow = 'hidden';
+          const onKey = (e) => {
+            if (e.key === 'Escape') onClose();
+          };
+          document.addEventListener('keydown', onKey);
+          return () => {
+            document.body.style.overflow = prevOverflow;
+            document.removeEventListener('keydown', onKey);
+          };
+        }
+        setStep(1);
+        setForm({ name: '', dog: '', service: 'Full grooming', date: '', notes: '' });
+      }, [open, onClose]);
       if (!open) return null;
       const upd = (k, v) => setForm(f => ({ ...f, [k]: v }));
 
       return (
-        <div onClick={onClose} style={{
+        <div onClick={onClose} role="dialog" aria-modal="true" aria-label="Booking request" style={{
           position: 'fixed', inset: 0, background: 'rgba(31,46,61,0.55)',
           backdropFilter: 'blur(4px)', zIndex: 50,
           display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24,
         }}>
-          <div onClick={e => e.stopPropagation()} style={{
-            background: 'var(--bg)', borderRadius: 24, width: 560, maxWidth: '100%',
-            padding: 36, boxShadow: 'var(--shadow-lg)', border: '1px solid var(--border)'
+          <div className="modal-panel" onClick={e => e.stopPropagation()} style={{
+            background: 'var(--bg)', borderRadius: 24,
+            boxShadow: 'var(--shadow-lg)', border: '1px solid var(--border)'
           }}>
             {step < 3 ? (
               <>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
                   <div className="eyebrow" style={{ color: 'var(--biscuit-tan-2)' }}>Step {step} of 2</div>
-                  <button onClick={onClose} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--fg2)' }}>
+                  <button type="button" onClick={onClose} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--fg2)' }}>
                     <Icon name="x" size={18} />
                   </button>
                 </div>
@@ -695,9 +805,6 @@
     /* --- App --- */
     function App() {
       const [booking, setBooking] = React.useState(false);
-      React.useEffect(() => {
-        if (window.lucide) window.lucide.createIcons();
-      }, []);
       const openBook = () => setBooking(true);
       return (
         <div>
