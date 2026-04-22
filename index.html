@@ -100,9 +100,9 @@
 
     function StarRow({ count = 5 }) {
       return (
-        <span style={{ display: 'inline-flex', gap: 2, color: 'var(--river-blue-2)' }}>
+        <span style={{ display: 'inline-flex', gap: 4, color: 'var(--river-blue-2)', fontSize: 18, lineHeight: 1 }}>
           {Array.from({ length: count }).map((_, i) => (
-            <Icon key={i} name="star" size={16} />
+            <span key={i} aria-hidden="true">★</span>
           ))}
         </span>
       );
@@ -259,8 +259,7 @@
       return (
         <section id="hero" className="section-shell hero-shell hero-grid">
           <div>
-            <Tag tone="tan">Cage-free · One-on-one · All breeds</Tag>
-            <h1 className="display" style={{ fontSize: 64, lineHeight: 0.98, letterSpacing: '-0.04em', margin: '8px 0 20px', maxWidth: 560 }}>
+            <h1 className="display" style={{ fontSize: 64, lineHeight: 0.98, letterSpacing: '-0.04em', margin: '0 0 20px', maxWidth: 560 }}>
               Stress-free grooming,<br/>one dog at a time.
             </h1>
             <p style={{ fontSize: 19, lineHeight: 1.55, color: 'var(--fg2)', maxWidth: 520, margin: '0 0 32px' }}>
