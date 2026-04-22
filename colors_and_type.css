@@ -449,6 +449,44 @@ a:hover {
   pointer-events: none;
   box-shadow: var(--shadow-sm);
 }
+.photo-tile .tile-trinket {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  box-shadow: 0 18px 28px -18px rgba(32,71,43,0.38);
+  transform: translateY(8px) rotate(-8deg);
+  transition: transform 280ms var(--ease-calm), box-shadow 280ms var(--ease-calm);
+  pointer-events: none;
+}
+.photo-tile .tile-trinket.featured {
+  width: 68px;
+  height: 68px;
+}
+.photo-tile .tile-trinket-core {
+  font-size: 26px;
+  line-height: 1;
+  color: var(--lincoln-navy);
+}
+.photo-tile .tile-trinket.sparkle {
+  background: linear-gradient(180deg, rgba(255,244,250,0.98), rgba(247,204,231,0.88));
+}
+.photo-tile .tile-trinket.heart {
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,236,247,0.98), rgba(242,185,220,0.92));
+}
+.photo-tile .tile-trinket.paw {
+  background: linear-gradient(180deg, rgba(245,255,226,0.98), rgba(199,226,93,0.92));
+}
+.photo-tile .tile-trinket.ribbon {
+  clip-path: polygon(14% 0, 86% 0, 100% 50%, 86% 100%, 14% 100%, 0 50%);
+  background: linear-gradient(180deg, rgba(255,247,249,0.98), rgba(248,214,236,0.94));
+}
 .photo-tile .tile-label {
   position: absolute;
   left: 12px;
@@ -551,6 +589,10 @@ a:hover {
   transform: translateY(0) rotate(0deg);
   box-shadow: 0 24px 34px -18px rgba(31,46,61,0.42);
 }
+.photo-tile:hover .tile-trinket {
+  transform: translateY(0) rotate(0deg);
+  box-shadow: 0 24px 34px -18px rgba(31,46,61,0.42);
+}
 
 /* Bento grid — 4 desktop cols, 2 tablet, 1 mobile, feature tiles span 2x2 */
 .bento {
@@ -600,6 +642,20 @@ a:hover {
     width: 12px;
     height: 12px;
     top: -6px;
+  }
+  .photo-tile .tile-trinket {
+    left: 8px;
+    bottom: 8px;
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+  }
+  .photo-tile .tile-trinket.featured {
+    width: 58px;
+    height: 58px;
+  }
+  .photo-tile .tile-trinket-core {
+    font-size: 22px;
   }
 }
 

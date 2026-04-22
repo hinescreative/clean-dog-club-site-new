@@ -447,12 +447,15 @@
       return genericTitles[index % genericTitles.length];
     }
 
-    const PHOTOS = IG_PHOTOS.map((photo, index) => {
+    const HERO_PHOTO_ID = 'DQFFJcxkX_Z';
+
+    const PHOTOS = IG_PHOTOS.filter((photo) => photo.id !== HERO_PHOTO_ID).map((photo, index) => {
       const dogNames = extractDogNames(photo.alt);
       const fallback = buildFallbackLabel(photo, index);
       return {
         ...photo,
         dogNames,
+        hasKnownName: dogNames.length > 0,
         labelTitle: dogNames.length > 0 ? dogNames.join(' & ') : fallback.title,
         labelSubtitle: dogNames.length > 0 ? 'Fresh from the club' : fallback.subtitle,
       };
@@ -460,10 +463,12 @@
     /* Feature positions spaced across 40 tiles for rhythm in the bento grid */
     const FEATURE_INDICES = new Set([0, 11, 22, 33]);
     const LABEL_VARIANTS = ['pin-a', 'pin-b', 'pin-c', 'pin-d'];
+    const TRINKET_VARIANTS = ['sparkle', 'heart', 'paw', 'ribbon'];
 
     function PhotoTile({ photo, index, onOpen, featured }) {
       const fallbackJpg = `assets/ig/${photo.id}.jpg`;
       const labelVariant = LABEL_VARIANTS[index % LABEL_VARIANTS.length];
+      const trinketVariant = TRINKET_VARIANTS[index % TRINKET_VARIANTS.length];
       return (
         <button
           type="button"
@@ -490,11 +495,19 @@
           <span className="tile-icon" aria-hidden="true">
             <Icon name="zoom-in" size={16} stroke={2} />
           </span>
-          <div className={`tile-label ${labelVariant} ${featured ? 'featured' : ''}`} aria-hidden="true">
-            <span className="tile-label-pin" />
-            <span className="tile-label-title">{photo.labelTitle}</span>
-            <span className="tile-label-subtitle">{photo.labelSubtitle}</span>
-          </div>
+          {photo.hasKnownName ? (
+            <div className={`tile-label ${labelVariant} ${featured ? 'featured' : ''}`} aria-hidden="true">
+              <span className="tile-label-pin" />
+              <span className="tile-label-title">{photo.labelTitle}</span>
+              <span className="tile-label-subtitle">{photo.labelSubtitle}</span>
+            </div>
+          ) : (
+            <div className={`tile-trinket ${trinketVariant} ${featured ? 'featured' : ''}`} aria-hidden="true">
+              <span className="tile-trinket-core">
+                {trinketVariant === 'heart' ? '♥' : trinketVariant === 'paw' ? '✦' : trinketVariant === 'ribbon' ? '✿' : '✧'}
+              </span>
+            </div>
+          )}
         </button>
       );
     }
