@@ -137,9 +137,9 @@
               display: 'flex', alignItems: 'center', gap: 10,
               cursor: 'pointer', border: 'none', textDecoration: 'none'
             }}>
-              <img src="assets/logo-new.png" alt="The Clean Dog Club logo" style={{ width: 58, height: 58, borderRadius: 16, objectFit: 'cover', boxShadow: 'var(--shadow-md)' }} />
+              <img src="assets/logo-new.png" alt="The Clean Dog Club logo" style={{ width: 72, height: 72, borderRadius: 18, objectFit: 'cover', boxShadow: 'var(--shadow-md)' }} />
               <span style={{
-                fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 24,
+                fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 28,
                 color: 'var(--fg1)', letterSpacing: '-0.01em', whiteSpace: 'nowrap'
               }}>The Clean Dog Club</span>
             </a>
@@ -259,24 +259,16 @@
       return (
         <section id="hero" className="section-shell hero-shell hero-grid">
           <div>
-            <div className="hero-brand-lockup">
-              <img src="assets/logo-new.png" alt="The Clean Dog Club logo" className="hero-brand-image" />
-              <div>
-                <div className="eyebrow" style={{ color: 'var(--lincoln-navy-2)', marginBottom: 6 }}>Fox River Grove Grooming</div>
-                <div className="hero-brand-title">The Clean Dog Club</div>
-              </div>
-            </div>
             <Tag tone="tan">Cage-free · One-on-one · All breeds</Tag>
-            <h1 className="display" style={{ fontSize: 48, lineHeight: 1.08, letterSpacing: '-0.025em', margin: '20px 0 24px', maxWidth: 460 }}>
+            <h1 className="display" style={{ fontSize: 64, lineHeight: 0.98, letterSpacing: '-0.04em', margin: '8px 0 20px', maxWidth: 560 }}>
               Stress-free grooming,<br/>one dog at a time.
             </h1>
             <p style={{ fontSize: 19, lineHeight: 1.55, color: 'var(--fg2)', maxWidth: 520, margin: '0 0 32px' }}>
               A cage-free, one-on-one salon in Fox River Grove. From the moment your pup walks in until they leave, they have the groomer's full attention — never crated, never rushed.
             </p>
-            <div className="offer-banner">
-              <span className="offer-badge">$10 OFF</span>
-              <span>New clients get $10 off the first appointment.</span>
-            </div>
+            <p style={{ margin: '0 0 22px', color: 'var(--lincoln-navy)', fontSize: 14, fontWeight: 700 }}>
+              New clients get $10 off the first appointment.
+            </p>
             <div className="hero-actions">
               <Button size="lg" onClick={onBook}>Book an appointment <Icon name="arrow-right" size={16} /></Button>
               <Button size="lg" variant="secondary" onClick={scrollToServices}>See services</Button>
