@@ -6,7 +6,7 @@
   <title>The Clean Dog Club — Stress-free, cage-free dog grooming in Fox River Grove</title>
   <meta name="description" content="One-on-one, cage-free grooming by Alexis Rivera. Over 13 years of experience. All breeds welcome in our quiet, relaxing Fox River Grove salon.">
   <link rel="stylesheet" href="colors_and_type.css">
-  <link rel="preload" as="image" href="assets/ig/webp/DWmb8MdDSbR.webp" fetchpriority="high" type="image/webp">
+  <link rel="preload" as="image" href="assets/ig/webp/DQFFJcxkX_Z.webp" fetchpriority="high" type="image/webp">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
@@ -193,8 +193,18 @@
             <div>
               <div className="eyebrow" style={{ color: 'var(--biscuit-tan)', marginBottom: 14 }}>Hours</div>
               <div style={{ fontSize: 13, lineHeight: 1.7, color: 'rgba(246,239,228,0.85)' }}>
-                Mon–Thu · 9–5:30<br/>Fri · 9–2<br/>Sat · 10–2<br/>Sun · closed
+                Mon–Thu · 9:00 AM–5:30 PM<br/>Fri · 9:00 AM–2:00 PM<br/>Sat · 10:00 AM–2:00 PM<br/>Sun · Closed
               </div>
+            </div>
+          </div>
+          <div style={{ maxWidth: 1200, margin: '28px auto 0' }}>
+            <div className="eyebrow" style={{ color: 'var(--biscuit-tan)', marginBottom: 12 }}>Follow along</div>
+            <div className="social-row footer-social-row">
+              <a href={BUSINESS_LINKS.instagram} target="_blank" rel="noreferrer">Instagram</a>
+              <a href={BUSINESS_LINKS.facebook} target="_blank" rel="noreferrer">Facebook</a>
+              <a href={BUSINESS_LINKS.yelp} target="_blank" rel="noreferrer">Yelp</a>
+              <a href={BUSINESS_LINKS.google} target="_blank" rel="noreferrer">Google</a>
+              <a href={BUSINESS_LINKS.chamber} target="_blank" rel="noreferrer">Chamber</a>
             </div>
           </div>
           <div className="footer-meta" style={{ maxWidth: 1200, margin: '48px auto 0', paddingTop: 24, borderTop: '1px solid rgba(246,239,228,0.18)', fontSize: 12, color: 'rgba(246,239,228,0.5)' }}>
@@ -205,7 +215,7 @@
       );
     }
 
-    function ServiceCard({ eyebrow, title, description, price, priceNote, icon, onBook }) {
+    function ServiceCard({ eyebrow, title, description, icon, onBook }) {
       const [hover, setHover] = React.useState(false);
       return (
         <div
@@ -229,9 +239,9 @@
           <div className="eyebrow" style={{ color: 'var(--biscuit-tan-2)' }}>{eyebrow}</div>
           <h3 style={{ margin: 0 }}>{title}</h3>
           <p style={{ margin: 0, color: 'var(--fg2)', fontSize: 14.5, lineHeight: 1.65 }}>{description}</p>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginTop: 'auto', paddingTop: 8 }}>
-            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 26 }}>{price}</span>
-            <span style={{ fontSize: 12, color: 'var(--fg3)' }}>{priceNote}</span>
+          <div style={{ marginTop: 'auto', paddingTop: 8, fontSize: 13.5, color: 'var(--fg2)', lineHeight: 1.6 }}>
+            Pricing varies based on breed, coat, and service preference.{' '}
+            <a href="tel:+12243574200" style={{ color: 'var(--lincoln-navy)', fontWeight: 700, borderBottom: 'none' }}>Call for pricing!</a>
           </div>
           <Button variant="secondary" size="sm" onClick={onBook}>Book this</Button>
         </div>
@@ -253,22 +263,32 @@
             <p style={{ fontSize: 19, lineHeight: 1.55, color: 'var(--fg2)', maxWidth: 520, margin: '0 0 32px' }}>
               A cage-free, one-on-one salon in Fox River Grove. From the moment your pup walks in until they leave, they have the groomer's full attention — never crated, never rushed.
             </p>
+            <div className="offer-banner">
+              <span className="offer-badge">$10 OFF</span>
+              <span>New clients get $10 off the first appointment.</span>
+            </div>
             <div className="hero-actions">
               <Button size="lg" onClick={onBook}>Book an appointment <Icon name="arrow-right" size={16} /></Button>
               <Button size="lg" variant="secondary" onClick={scrollToServices}>See services</Button>
             </div>
             <div className="hero-meta">
               <StarRow />
-              <span style={{ fontSize: 13, color: 'var(--fg2)' }}>4.8 on Google · 13 years grooming · All breeds welcome</span>
+              <span style={{ fontSize: 13, color: 'var(--fg2)' }}>Grooming since 2012 · Cage-free appointments · All breeds welcome</span>
+            </div>
+            <div className="social-row">
+              <a href={BUSINESS_LINKS.instagram} target="_blank" rel="noreferrer">Instagram</a>
+              <a href={BUSINESS_LINKS.facebook} target="_blank" rel="noreferrer">Facebook</a>
+              <a href={BUSINESS_LINKS.yelp} target="_blank" rel="noreferrer">Yelp</a>
+              <a href={BUSINESS_LINKS.google} target="_blank" rel="noreferrer">Google</a>
             </div>
           </div>
           <div style={{ position: 'relative' }}>
             <div className="hero-photo">
               <picture>
-                <source srcSet="assets/ig/webp/DWmb8MdDSbR.webp" type="image/webp" />
+                <source srcSet="assets/ig/webp/DQFFJcxkX_Z.webp" type="image/webp" />
                 <img
-                  src="assets/ig/DWmb8MdDSbR.jpg"
-                  alt="A freshly-groomed pup at The Clean Dog Club in Fox River Grove"
+                  src="assets/ig/DQFFJcxkX_Z.jpg"
+                  alt="Alexis Rivera with two dogs at The Clean Dog Club in Fox River Grove"
                   width="1080" height="1339"
                   fetchpriority="high"
                   decoding="async"
@@ -298,7 +318,7 @@
         { icon: 'user', label: 'One-on-one attention' },
         { icon: 'home', label: 'Cage-free, always' },
         { icon: 'paw-print', label: 'All breeds welcome' },
-        { icon: 'award', label: '13 years experience' },
+        { icon: 'award', label: 'Grooming since 2012' },
       ];
       return (
         <section className="section-shell trust-shell">
@@ -323,21 +343,21 @@
           <SectionHeading
             eyebrow="Services"
             title="What your pup can book."
-            subtitle="Pricing varies a little based on breed, coat and condition — I'll quote you honestly when you book."
+            subtitle={<>Pricing varies based on breed, coat, and service preference. <a href="tel:+12243574200" style={{ borderBottom: 'none', fontWeight: 700 }}>Call for pricing!</a></>}
           />
           <div className="services-grid" style={{ gap: 20, marginTop: 40 }}>
             <ServiceCard eyebrow="Full groom" icon="scissors"
               title="Bath, cut, nails, ears &amp; finish"
-              description="The whole experience. A warm bath, breed-appropriate cut, nails, ears and a finishing brush-out — all in one calm appointment."
-              price="from $65" priceNote="by breed &amp; coat" onBook={onBook} />
+              description="The whole experience. A warm bath, breed-appropriate cut, nails, ears, and a finishing brush-out in one calm appointment."
+              onBook={onBook} />
             <ServiceCard eyebrow="Bath &amp; brush" icon="bath"
               title="Clean, fluffy, good as new"
               description="Great between full grooms, or for pups who don't need a cut. Warm bath, blow-dry, brush, and a quick tidy."
-              price="from $45" priceNote="by size" onBook={onBook} />
+              onBook={onBook} />
             <ServiceCard eyebrow="À la carte" icon="paw-print"
               title="Nails, paw pads &amp; tidy"
               description="Quick nail trim, paw pad tidy, or a sanitary trim. In and out — no full bath required."
-              price="$20" priceNote="nails only" onBook={onBook} />
+              onBook={onBook} />
           </div>
         </section>
       );
@@ -370,6 +390,13 @@
 
     /* IG manifest injected as JSON at page load */
     const IG_PHOTOS = JSON.parse(document.getElementById('ig-manifest').textContent);
+    const BUSINESS_LINKS = {
+      google: 'https://share.google/i0ygisM8bLxdOFVEe',
+      instagram: 'https://www.instagram.com/thecleandogclub',
+      facebook: 'https://www.facebook.com/thecleandogclub/',
+      yelp: 'https://www.yelp.com/biz/the-clean-dog-club-fox-river-grove',
+      chamber: 'https://business.carygrovechamber.com/list/member/the-clean-dog-club-2594.htm',
+    };
     function titleCaseName(value) {
       return value
         .split(/\s+/)
@@ -563,7 +590,7 @@
           <SectionHeading
             eyebrow="The pack"
             title={<>Fresh haircuts, happy faces.</>}
-            subtitle="Every dog that leaves the shop gets a photo, and the named pups get their own pin-style label."
+            subtitle="A recent look at the club, with named pups called out when the post caption gives us their name."
           />
           <div className="bento">
             {photos.map((photo, i) => (
@@ -577,7 +604,7 @@
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: 32 }}>
-            <a href="https://www.instagram.com/thecleandogclub" target="_blank" rel="noreferrer"
+            <a href={BUSINESS_LINKS.instagram} target="_blank" rel="noreferrer"
                style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--fg2)', textDecoration: 'underline', textUnderlineOffset: 3 }}>
               See more on Instagram →
             </a>
@@ -596,28 +623,25 @@
 
     function Testimonials() {
       const reviews = [
-        { quote: 'He looks and smells amazing! Alexis is so friendly and attentive and we definitely know she absolutely loves dogs. Our pup was so relaxed with her.', who: 'M. D.', src: 'Nextdoor' },
-        { quote: "If you're looking for a groomer that provides peace of mind and actual care towards the health of hair and skin of your furry friends, then Alexis is the one.", who: 'Yelp review', src: 'Yelp' },
-        { quote: "The only groomer my dogs have ever been excited to be dropped off at. They treat them like family.", who: 'Yelp review', src: 'Yelp' },
+        { quote: 'He looks and smells amazing! Alexis is so friendly and attentive and we definitely know she absolutely loves dogs. Our pup was so relaxed with her.', who: 'Happy client', src: 'Neighborhood review', href: BUSINESS_LINKS.google },
+        { quote: "If you're looking for a groomer that provides peace of mind and actual care towards the health of hair and skin of your furry friends, then Alexis is the one.", who: 'Aaron A.', src: 'Yelp', href: BUSINESS_LINKS.yelp },
+        { quote: "The only groomer my dogs have ever been excited to be dropped off at. They treat them like family.", who: 'Happy client', src: 'Client review', href: BUSINESS_LINKS.facebook },
       ];
       return (
         <section className="section-shell">
-          <SectionHeading eyebrow="Neighbors are saying" title="Five stars, one dog at a time." align="center" />
-          <div className="testimonials-grid" style={{ gap: 20, marginTop: 40 }}>
-            {reviews.map((r, i) => (
-              <div key={i} style={{
-                background: 'var(--bg-elevated)', border: '1px solid var(--border)',
-                borderRadius: 16, padding: 28,
-              }}>
-                <StarRow />
-                <p style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 18, lineHeight: 1.5, margin: '14px 0 18px', fontStyle: 'italic', color: 'var(--fg1)' }}>
-                  "{r.quote}"
-                </p>
-                <div style={{ fontSize: 13, color: 'var(--fg2)' }}>
-                  <strong style={{ color: 'var(--fg1)' }}>{r.who}</strong> · <span style={{ color: 'var(--fg3)' }}>{r.src}</span>
-                </div>
-              </div>
-            ))}
+          <SectionHeading eyebrow="Kind words" title="Five-star feedback, on repeat." align="center" />
+          <div className="review-marquee">
+            <div className="review-track">
+              {[...reviews, ...reviews].map((r, i) => (
+                <article key={`${r.src}-${i}`} className="review-card">
+                  <StarRow />
+                  <p className="review-copy">"{r.quote}"</p>
+                  <div className="review-meta">
+                    <strong>{r.who}</strong> · <a href={r.href} target="_blank" rel="noreferrer" style={{ borderBottom: 'none' }}>{r.src}</a>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
       );
@@ -645,9 +669,15 @@
                   <Icon name="calendar" size={18} style={{ color: 'var(--biscuit-tan-2)', marginTop: 4 }} />
                   <div>
                     <div style={{ fontWeight: 600 }}>By appointment</div>
-                    <div style={{ color: 'var(--fg2)' }}>Mon–Thu 9–5:30 · Fri 9–2 · Sat 10–2 · Sun closed</div>
+                    <div style={{ color: 'var(--fg2)' }}>Mon–Thu 9:00 AM–5:30 PM · Fri 9:00 AM–2:00 PM · Sat 10:00 AM–2:00 PM · Sun Closed</div>
                   </div>
                 </div>
+              </div>
+              <div className="social-row" style={{ marginTop: 24 }}>
+                <a href={BUSINESS_LINKS.instagram} target="_blank" rel="noreferrer">Instagram</a>
+                <a href={BUSINESS_LINKS.facebook} target="_blank" rel="noreferrer">Facebook</a>
+                <a href={BUSINESS_LINKS.yelp} target="_blank" rel="noreferrer">Yelp</a>
+                <a href={BUSINESS_LINKS.chamber} target="_blank" rel="noreferrer">Chamber</a>
               </div>
               <div style={{ marginTop: 28 }}><Button size="lg" onClick={onBook}>Book an appointment</Button></div>
             </div>
@@ -811,10 +841,10 @@
           <TopNav onBook={openBook} />
           <Hero onBook={openBook} />
           <TrustStrip />
+          <Testimonials />
           <Services onBook={openBook} />
           <PromiseBlock />
           <Gallery />
-          <Testimonials />
           <VisitBlock onBook={openBook} />
           <Footer />
           <BookingModal open={booking} onClose={() => setBooking(false)} />
