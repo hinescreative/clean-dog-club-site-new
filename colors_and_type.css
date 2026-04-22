@@ -259,6 +259,35 @@ a:hover {
   gap: 12px;
 }
 
+.hero-brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 18px;
+  padding: 12px 16px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.92), rgba(247,232,239,0.9));
+  border: 1px solid rgba(216,114,175,0.18);
+  box-shadow: var(--shadow-md);
+}
+
+.hero-brand-image {
+  width: 84px;
+  height: 84px;
+  border-radius: 22px;
+  object-fit: cover;
+  box-shadow: 0 16px 26px -18px rgba(32,71,43,0.45);
+}
+
+.hero-brand-title {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--fg1);
+}
+
 .hero-meta {
   gap: 24px;
   margin-top: 36px;
@@ -316,12 +345,6 @@ a:hover {
   background: rgba(255,247,249,0.08);
   border-color: rgba(255,247,249,0.18);
   color: var(--sudsy-cream);
-}
-
-.hero-badge {
-  position: absolute;
-  bottom: -20px;
-  left: -30px;
 }
 
 .topnav-inner {
@@ -792,12 +815,6 @@ a:hover {
   .footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .hero-badge {
-    left: 16px;
-    bottom: 16px;
-    max-width: calc(100% - 32px);
-  }
 }
 
 @media (max-width: 760px) {
@@ -815,6 +832,23 @@ a:hover {
     padding: 12px 20px;
     gap: 14px;
     flex-wrap: wrap;
+  }
+
+  .hero-brand-lockup {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 10px 12px;
+    gap: 12px;
+  }
+
+  .hero-brand-image {
+    width: 68px;
+    height: 68px;
+    border-radius: 18px;
+  }
+
+  .hero-brand-title {
+    font-size: 24px;
   }
 
   .topnav-links {
@@ -857,12 +891,6 @@ a:hover {
 
   .hero-grid {
     gap: 32px;
-  }
-
-  .hero-badge {
-    position: static;
-    margin-top: 16px;
-    max-width: none;
   }
 
   .modal-panel {

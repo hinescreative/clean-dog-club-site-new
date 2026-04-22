@@ -100,7 +100,7 @@
 
     function StarRow({ count = 5 }) {
       return (
-        <span style={{ display: 'inline-flex', gap: 2, color: 'var(--biscuit-tan)' }}>
+        <span style={{ display: 'inline-flex', gap: 2, color: 'var(--river-blue-2)' }}>
           {Array.from({ length: count }).map((_, i) => (
             <Icon key={i} name="star" size={16} />
           ))}
@@ -137,9 +137,9 @@
               display: 'flex', alignItems: 'center', gap: 10,
               cursor: 'pointer', border: 'none', textDecoration: 'none'
             }}>
-              <img src="assets/logo-new.png" alt="The Clean Dog Club logo" style={{ width: 42, height: 42, borderRadius: 12, objectFit: 'cover' }} />
+              <img src="assets/logo-new.png" alt="The Clean Dog Club logo" style={{ width: 58, height: 58, borderRadius: 16, objectFit: 'cover', boxShadow: 'var(--shadow-md)' }} />
               <span style={{
-                fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 20,
+                fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 24,
                 color: 'var(--fg1)', letterSpacing: '-0.01em', whiteSpace: 'nowrap'
               }}>The Clean Dog Club</span>
             </a>
@@ -259,6 +259,13 @@
       return (
         <section id="hero" className="section-shell hero-shell hero-grid">
           <div>
+            <div className="hero-brand-lockup">
+              <img src="assets/logo-new.png" alt="The Clean Dog Club logo" className="hero-brand-image" />
+              <div>
+                <div className="eyebrow" style={{ color: 'var(--lincoln-navy-2)', marginBottom: 6 }}>Fox River Grove Grooming</div>
+                <div className="hero-brand-title">The Clean Dog Club</div>
+              </div>
+            </div>
             <Tag tone="tan">Cage-free · One-on-one · All breeds</Tag>
             <h1 className="display" style={{ fontSize: 48, lineHeight: 1.08, letterSpacing: '-0.025em', margin: '20px 0 24px', maxWidth: 460 }}>
               Stress-free grooming,<br/>one dog at a time.
@@ -297,19 +304,6 @@
                   decoding="async"
                 />
               </picture>
-            </div>
-            <div className="hero-badge" style={{
-              background: 'var(--bg)', border: '1px solid var(--border)',
-              borderRadius: 16, padding: '16px 20px', boxShadow: 'var(--shadow-md)',
-              display: 'flex', gap: 14, alignItems: 'center', maxWidth: 280,
-            }}>
-              <div style={{ width: 40, height: 40, borderRadius: 999, background: 'var(--biscuit-tan)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--lincoln-navy)' }}>
-                <Icon name="paw-print" size={18} />
-              </div>
-              <div>
-                <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--fg1)' }}>Cage-free, always.</div>
-                <div className="signature" style={{ fontSize: 18, color: 'var(--fg2)', marginTop: 2 }}>— Alexis &amp; Lyn</div>
-              </div>
             </div>
           </div>
         </section>
@@ -672,7 +666,12 @@
                   <Icon name="calendar" size={18} style={{ color: 'var(--biscuit-tan-2)', marginTop: 4 }} />
                   <div>
                     <div style={{ fontWeight: 600 }}>By appointment</div>
-                    <div style={{ color: 'var(--fg2)' }}>Mon–Thu 9:00 AM–5:30 PM · Fri 9:00 AM–2:00 PM · Sat 10:00 AM–2:00 PM · Sun Closed</div>
+                    <div style={{ color: 'var(--fg2)', display: 'grid', gap: 2 }}>
+                      <span>Mon–Thu · 9:00 AM–5:30 PM</span>
+                      <span>Fri · 9:00 AM–2:00 PM</span>
+                      <span>Sat · 10:00 AM–2:00 PM</span>
+                      <span>Sun · Closed</span>
+                    </div>
                   </div>
                 </div>
               </div>
