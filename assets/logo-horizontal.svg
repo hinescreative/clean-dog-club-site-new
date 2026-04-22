@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 140" width="480" height="140">
+  <defs>
+    
+  </defs>
+  
+  <g transform="translate(20,20)">
+    <circle cx="50" cy="50" r="50" fill="#1F2E3D"></circle>
+    <g fill="#F6EFE4" transform="translate(50,52)">
+      
+      <ellipse cx="0" cy="0" rx="22" ry="19"></ellipse>
+      
+      <ellipse cx="-18" cy="-14" rx="7" ry="13" transform="rotate(-25 -18 -14)"></ellipse>
+      <ellipse cx="18" cy="-14" rx="7" ry="13" transform="rotate(25 18 -14)"></ellipse>
+      
+      <ellipse cx="0" cy="8" rx="10" ry="7" fill="#F6EFE4"></ellipse>
+      
+      <ellipse cx="0" cy="4" rx="3" ry="2.2" fill="#1F2E3D"></ellipse>
+      
+      <circle cx="-8" cy="-3" r="2" fill="#1F2E3D"></circle>
+      <circle cx="8" cy="-3" r="2" fill="#1F2E3D"></circle>
+    </g>
+  </g>
+  
+  <text x="140" y="62" class="wm" font-size="34">The Clean Dog Club</text>
+  <text x="141" y="92" class="sub" font-size="11">Fox River Grove • Est. 2012</text>
+</svg>

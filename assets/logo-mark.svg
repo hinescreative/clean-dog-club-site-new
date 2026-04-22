@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    
+  </defs>
+  <circle cx="120" cy="120" r="118" fill="#1F2E3D"></circle>
+  <circle cx="120" cy="120" r="108" fill="none" stroke="#F6EFE4" stroke-width="1" stroke-opacity="0.4"></circle>
+  
+  <g fill="#F6EFE4" transform="translate(120,108)">
+    <ellipse cx="0" cy="0" rx="38" ry="32"></ellipse>
+    <ellipse cx="-30" cy="-22" rx="11" ry="22" transform="rotate(-25 -30 -22)"></ellipse>
+    <ellipse cx="30" cy="-22" rx="11" ry="22" transform="rotate(25 30 -22)"></ellipse>
+    <ellipse cx="0" cy="14" rx="17" ry="12"></ellipse>
+    <ellipse cx="0" cy="7" rx="5" ry="3.5" fill="#1F2E3D"></ellipse>
+    <circle cx="-13" cy="-5" r="3" fill="#1F2E3D"></circle>
+    <circle cx="13" cy="-5" r="3" fill="#1F2E3D"></circle>
+  </g>
+  
+  <path id="arc" d="M 30 150 A 90 90 0 0 0 210 150" fill="none"></path>
+  <text class="mk" font-size="13">
+    <textPath href="#arc" startOffset="50%" text-anchor="middle">THE CLEAN DOG CLUB</textPath>
+  </text>
+</svg>

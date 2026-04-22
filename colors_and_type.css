@@ -1,0 +1,435 @@
+/* ============================================================
+   The Clean Dog Club — Colors & Type tokens
+   ============================================================ */
+
+/* Google Fonts (Fraunces display, Inter UI, Caveat script) */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap');
+
+:root {
+  /* ---------- Brand palette ---------- */
+  --sudsy-cream:  #F6EFE4;
+  --sudsy-cream-2:#EFE6D6;   /* slightly deeper cream for panels */
+  --lincoln-navy: #1F2E3D;
+  --lincoln-navy-2:#2B3E52;
+  --river-blue:   #5B8AA8;
+  --river-blue-2: #416F8C;
+  --biscuit-tan:  #C9A07A;
+  --biscuit-tan-2:#AD8561;
+  --clover:       #6C8A6A;
+  --clover-2:     #526E50;
+  --paw-pink:     #E8B4A5;
+
+  /* Neutrals (warm, derived from navy over cream) */
+  --ink:        #1F2E3D;
+  --ink-soft:   #44566B;
+  --ink-muted:  #78879A;
+  --hairline:   rgba(31, 46, 61, 0.12);
+  --hairline-strong: rgba(31, 46, 61, 0.22);
+
+  /* ---------- Semantic colors ---------- */
+  --bg:           var(--sudsy-cream);
+  --bg-elevated:  #FBF6EC;
+  --bg-deep:      var(--lincoln-navy);
+  --surface:      #FFFFFF;
+
+  --fg1: var(--ink);        /* primary text */
+  --fg2: var(--ink-soft);   /* secondary */
+  --fg3: var(--ink-muted);  /* tertiary / meta */
+  --fg-inverse: var(--sudsy-cream);
+
+  --accent:       var(--river-blue);
+  --accent-hover: var(--river-blue-2);
+  --warm:         var(--biscuit-tan);
+  --warm-hover:   var(--biscuit-tan-2);
+  --nature:       var(--clover);
+  --nature-hover: var(--clover-2);
+  --highlight:    var(--paw-pink);
+
+  --border: var(--hairline);
+  --border-strong: var(--hairline-strong);
+
+  --success: var(--clover);
+  --info:    var(--river-blue);
+  --warn:    #D48B3F;
+  --error:   #B4493A;
+
+  /* ---------- Type families ---------- */
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-script:  'Caveat', cursive;
+
+  /* ---------- Type scale ---------- */
+  --fs-xs:   12px;
+  --fs-sm:   14px;
+  --fs-base: 16px;
+  --fs-md:   18px;
+  --fs-lg:   20px;
+  --fs-xl:   24px;
+  --fs-2xl:  32px;
+  --fs-3xl:  44px;
+  --fs-4xl:  60px;
+  --fs-5xl:  80px;
+
+  --lh-tight:  1.05;
+  --lh-snug:   1.2;
+  --lh-normal: 1.45;
+  --lh-loose:  1.65;
+
+  /* ---------- Spacing (8px base) ---------- */
+  --s-0: 0;
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+
+  /* ---------- Radii ---------- */
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-pill: 999px;
+
+  /* ---------- Shadows (quiet) ---------- */
+  --shadow-sm: 0 1px 2px rgba(31,46,61,0.06);
+  --shadow-md: 0 6px 20px -8px rgba(31,46,61,0.14);
+  --shadow-lg: 0 18px 40px -20px rgba(31,46,61,0.22);
+
+  /* ---------- Motion ---------- */
+  --ease-calm: cubic-bezier(0.25, 0.8, 0.25, 1);
+  --dur-fast: 120ms;
+  --dur-base: 240ms;
+  --dur-slow: 400ms;
+}
+
+/* ============================================================
+   Semantic element styles
+   ============================================================ */
+
+html, body {
+  background: var(--bg);
+  color: var(--fg1);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+.h-display,
+h1.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-5xl);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144;
+  color: var(--fg1);
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-4xl);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.015em;
+  font-variation-settings: "opsz" 96;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-3xl);
+  line-height: var(--lh-snug);
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 72;
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-snug);
+  letter-spacing: -0.005em;
+  font-variation-settings: "opsz" 48;
+}
+
+h4 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-lg);
+  line-height: var(--lh-snug);
+  letter-spacing: 0;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg2);
+}
+
+p, .body {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-loose);
+  color: var(--fg1);
+  text-wrap: pretty;
+}
+
+.small {
+  font-size: var(--fs-sm);
+  color: var(--fg2);
+}
+
+.meta {
+  font-size: var(--fs-xs);
+  color: var(--fg3);
+  letter-spacing: 0.02em;
+}
+
+.signature {
+  font-family: var(--font-script);
+  font-weight: 500;
+  font-size: var(--fs-xl);
+  color: var(--fg2);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color var(--dur-base) var(--ease-calm),
+              border-color var(--dur-base) var(--ease-calm);
+}
+a:hover {
+  color: var(--accent-hover);
+  border-bottom-color: currentColor;
+}
+
+/* ============================================================
+   Photo system — bento gallery, tiles, lightbox
+   ============================================================ */
+
+.photo-tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  cursor: zoom-in;
+  background: var(--sudsy-cream-2);
+  isolation: isolate;
+}
+.photo-tile > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms var(--ease-calm),
+              filter 400ms var(--ease-calm);
+  will-change: transform;
+}
+.photo-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(31,46,61,0.35) 100%);
+  opacity: 0;
+  transition: opacity 300ms var(--ease-calm);
+  pointer-events: none;
+}
+.photo-tile .tile-icon {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(246,239,228,0.94);
+  color: var(--lincoln-navy);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 280ms var(--ease-calm), transform 280ms var(--ease-calm);
+  pointer-events: none;
+  box-shadow: var(--shadow-sm);
+}
+.photo-tile:hover > img {
+  transform: scale(1.055);
+  filter: saturate(1.06);
+}
+.photo-tile:hover::after {
+  opacity: 1;
+}
+.photo-tile:hover .tile-icon {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Bento grid — 4 desktop cols, 2 tablet, 1 mobile, feature tiles span 2x2 */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: dense;
+  gap: 14px;
+  margin-top: 40px;
+}
+.bento .photo-tile {
+  aspect-ratio: 1 / 1;
+}
+.bento .photo-tile.feature {
+  grid-column: span 2;
+  grid-row: span 2;
+  border-radius: var(--r-xl);
+}
+.bento .photo-tile.wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 900px) {
+  .bento { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .bento .photo-tile.feature { grid-column: span 2; grid-row: span 2; }
+  .bento .photo-tile.wide { grid-column: span 2; }
+}
+@media (max-width: 560px) {
+  .bento { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .bento .photo-tile.feature { grid-column: span 2; grid-row: span 2; border-radius: var(--r-lg); }
+  .bento .photo-tile.wide { grid-column: span 2; }
+}
+
+/* Hero photo */
+.hero-photo {
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4 / 5;
+  background: var(--sudsy-cream-2);
+}
+.hero-photo > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 9s var(--ease-calm);
+  transform: scale(1);
+}
+.hero-photo:hover > img { transform: scale(1.08); }
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(20, 28, 38, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: lb-fade 280ms var(--ease-calm);
+}
+@keyframes lb-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.lightbox-stage {
+  position: relative;
+  max-width: min(92vw, 1080px);
+  max-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-stage > picture > img,
+.lightbox-stage > img {
+  display: block;
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: var(--r-lg);
+  box-shadow: 0 30px 90px -20px rgba(0,0,0,0.7);
+  animation: lb-pop 340ms var(--ease-calm);
+}
+.lightbox-caption {
+  margin-top: 14px;
+  max-width: 560px;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: rgba(246,239,228,0.88);
+  text-align: center;
+  padding: 0 12px;
+  animation: lb-pop 400ms var(--ease-calm);
+}
+@keyframes lb-pop {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.lightbox-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  background: rgba(246,239,228,0.14);
+  color: var(--sudsy-cream);
+  border: 1px solid rgba(246,239,228,0.22);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 200ms var(--ease-calm), transform 200ms var(--ease-calm);
+  backdrop-filter: blur(6px);
+}
+.lightbox-btn:hover { background: rgba(246,239,228,0.28); transform: translateY(-50%) scale(1.05); }
+.lightbox-btn.prev  { left: 16px; }
+.lightbox-btn.next  { right: 16px; }
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: rgba(246,239,228,0.14);
+  border: 1px solid rgba(246,239,228,0.22);
+  color: var(--sudsy-cream);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 200ms var(--ease-calm);
+  backdrop-filter: blur(6px);
+}
+.lightbox-close:hover { background: rgba(246,239,228,0.28); }
+.lightbox-counter {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(246,239,228,0.82);
+  letter-spacing: 0.08em;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(20,28,38,0.5);
+  border: 1px solid rgba(246,239,228,0.16);
+}
+
+@media (max-width: 640px) {
+  .lightbox-btn { width: 40px; height: 40px; }
+  .lightbox-btn.prev { left: 8px; }
+  .lightbox-btn.next { right: 8px; }
+}

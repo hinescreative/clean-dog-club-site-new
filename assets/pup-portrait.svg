@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="pup" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F6EFE4"></stop>
+      <stop offset="100%" stop-color="#C9A07A"></stop>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#pup)"></rect>
+  <g transform="translate(200,230)" fill="#1F2E3D" opacity="0.8">
+    <ellipse cx="0" cy="0" rx="88" ry="72"></ellipse>
+    <ellipse cx="-68" cy="-52" rx="22" ry="44" transform="rotate(-20 -68 -52)"></ellipse>
+    <ellipse cx="68" cy="-52" rx="22" ry="44" transform="rotate(20 68 -52)"></ellipse>
+    <ellipse cx="0" cy="26" rx="36" ry="22"></ellipse>
+    <ellipse cx="0" cy="14" rx="10" ry="7" fill="#1F2E3D"></ellipse>
+    <circle cx="-28" cy="-12" r="6" fill="#F6EFE4"></circle>
+    <circle cx="28" cy="-12" r="6" fill="#F6EFE4"></circle>
+    <circle cx="-28" cy="-12" r="3" fill="#1F2E3D"></circle>
+    <circle cx="28" cy="-12" r="3" fill="#1F2E3D"></circle>
+  </g>
+  <text x="12" y="390" font-family="Inter, sans-serif" font-size="9" fill="#1F2E3D" opacity="0.5">Placeholder portrait</text>
+</svg>
